@@ -1,0 +1,3012 @@
+Started GET "/posts" for ::1 at 2024-07-20 15:01:29 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 7 pending migrations:
+
+20240101134735_devise_create_users.rb
+20240102130449_add_name_to_users.rb
+20240106131716_add_self_profile_and_image.rb
+20240106135649_create_active_storage_tables.active_storage.rb
+20240108141409_create_rooms.rb
+20240108153319_add_adress_to_rooms.rb
+20240116155034_create_reservations.rb
+
+
+):
+  
+activerecord (6.1.3.2) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.3.2) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.3.2) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.3.2) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3.2) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
+railties (6.1.3.2) lib/rails/engine.rb:539:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20240101134735)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240101134735"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddNameToUsers (20240102130449)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "name" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240102130449"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddSelfProfileAndImage (20240106131716)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "image_name" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "self_introduction" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240106131716"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20240106135649)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240106135649"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRooms (20240108141409)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "price" decimal, "image_room" varchar, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240108141409"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAdressToRooms (20240108153319)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "rooms" ADD "adress" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240108153319"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReservations (20240116155034)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" date, "finish_date" date, "number_of_people" integer, "user_id" integer, "room_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240116155034"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-07-20 06:02:16.442480"], ["updated_at", "2024-07-20 06:02:16.442480"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for ::1 at 2024-07-20 15:02:27 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+Started GET "/posts" for ::1 at 2024-07-20 15:19:42 +0900
+  
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+Started GET "/posts" for ::1 at 2024-07-20 18:16:40 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+Started GET "/" for ::1 at 2024-07-20 21:37:17 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2278)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.22
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 750.5ms | Allocations: 33901)
+Completed 500 Internal Server Error in 779ms (ActiveRecord: 0.3ms | Allocations: 44634)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/watsusan/Desktop/rails02-develop/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    12:     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    13:     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+app/views/layouts/application.html.erb:10
+Started GET "/" for ::1 at 2024-07-20 21:37:25 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 279)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.22
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 448.8ms | Allocations: 5861)
+Completed 500 Internal Server Error in 458ms (ActiveRecord: 0.0ms | Allocations: 6431)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/watsusan/Desktop/rails02-develop/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    12:     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    13:     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+app/views/layouts/application.html.erb:10
+Started GET "/" for ::1 at 2024-07-20 21:44:20 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2509)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/watsusan/Desktop/rails02-develop/public/packs
+[Webpacker] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[Webpacker] Hash: 77d7d418d1ab93267565
+Version: webpack 4.47.0
+Time: 429ms
+Built at: 2024/07/20 21:44:21
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-f1a6c85ce8df530e3e96.js    121 KiB  application  [emitted] [immutable]  application
+js/application-f1a6c85ce8df530e3e96.js.map    134 KiB  application  [emitted] [dev]        application
+       js/romm/own-37c7c80d503df3de63bf.js   3.98 KiB     romm/own  [emitted] [immutable]  romm/own
+   js/romm/own-37c7c80d503df3de63bf.js.map    3.7 KiB     romm/own  [emitted] [dev]        romm/own
+                             manifest.json  682 bytes               [emitted]              
+Entrypoint application = js/application-f1a6c85ce8df530e3e96.js js/application-f1a6c85ce8df530e3e96.js.map
+Entrypoint romm/own = js/romm/own-37c7c80d503df3de63bf.js js/romm/own-37c7c80d503df3de63bf.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 1.34 KiB {application} [built]
+[./app/javascript/packs/romm/own.js] 112 bytes {romm/own} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 1292.1ms | Allocations: 14756)
+Completed 200 OK in 1304ms (Views: 1297.6ms | ActiveRecord: 0.2ms | Allocations: 23205)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-20 21:52:31 +0900
+Processing by Devise::SessionsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 686)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 346.6ms | Allocations: 253205)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 353.8ms | Allocations: 257273)
+Completed 200 OK in 373ms (Views: 358.2ms | ActiveRecord: 0.8ms | Allocations: 267246)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-20 21:52:35 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 241)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 149)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2512)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 6582)
+Completed 200 OK in 18ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 9646)
+
+
+Started GET "/" for ::1 at 2024-07-20 21:52:39 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 244)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 4080)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 4714)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA%E5%BA%9C" for ::1 at 2024-07-20 21:52:41 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪府"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 3.2ms | Allocations: 756)
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3060)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 7149)
+Completed 200 OK in 21ms (Views: 17.5ms | ActiveRecord: 1.8ms | Allocations: 9188)
+
+
+Started GET "/" for ::1 at 2024-07-20 21:52:44 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4057)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 4674)
+
+
+Started GET "/" for ::1 at 2024-07-20 21:54:35 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2357)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 13315)
+Completed 200 OK in 32ms (Views: 21.4ms | ActiveRecord: 0.2ms | Allocations: 21834)
+
+
+Started GET "/" for ::1 at 2024-07-20 22:02:44 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2850)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 13048)
+Completed 200 OK in 42ms (Views: 36.1ms | ActiveRecord: 0.2ms | Allocations: 21805)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA%E5%BA%9C" for ::1 at 2024-07-20 22:02:50 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪府"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.5ms | Allocations: 762)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 5.1ms | Allocations: 3106)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 7207)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 0.4ms | Allocations: 9268)
+
+
+Started GET "/" for ::1 at 2024-07-20 22:02:51 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.7ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 4058)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 4676)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-20 22:03:31 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 680)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 112.3ms | Allocations: 46820)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 115.3ms | Allocations: 50888)
+Completed 200 OK in 131ms (Views: 119.1ms | ActiveRecord: 1.4ms | Allocations: 59606)
+
+
+Started GET "/" for ::1 at 2024-07-20 22:04:14 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 250)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 4208)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.0ms | Allocations: 4868)
+
+
+Started GET "/" for ::1 at 2024-07-20 22:04:14 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 4168)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 4707)
+
+
+Started GET "/" for ::1 at 2024-07-20 22:06:10 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2386)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 13455)
+Completed 200 OK in 46ms (Views: 37.6ms | ActiveRecord: 0.2ms | Allocations: 22058)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-22 19:59:56 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 4.0ms | Allocations: 815)
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 603)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 81.0ms | Allocations: 50305)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 96.4ms | Allocations: 59401)
+Completed 200 OK in 109ms (Views: 99.4ms | ActiveRecord: 0.2ms | Allocations: 74468)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:00:03 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1345)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 5627)
+Completed 200 OK in 19ms (Views: 14.2ms | ActiveRecord: 0.6ms | Allocations: 8079)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-22 20:00:07 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 262)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2142)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 7093)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.0ms | Allocations: 9708)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:29 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.3ms | Allocations: 725)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2988)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 7037)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.6ms | Allocations: 8662)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA%E5%BA%9C&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:33 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪府", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 404)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1946)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 5753)
+Completed 200 OK in 14ms (Views: 11.3ms | ActiveRecord: 0.7ms | Allocations: 6821)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:36 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.8ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 5697)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.4ms | Allocations: 6383)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA%E5%BA%9C&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:39 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪府", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 409)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 5678)
+Completed 200 OK in 16ms (Views: 13.3ms | ActiveRecord: 0.5ms | Allocations: 6361)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:41 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.1ms | Allocations: 379)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1809)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 5619)
+Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.4ms | Allocations: 6188)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:01:41 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 4057)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 4590)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA%E5%BA%9C" for ::1 at 2024-07-22 20:01:44 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪府"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.5ms | Allocations: 401)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1855)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 5677)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 6368)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:01:45 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 4057)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 4589)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD" for ::1 at 2024-07-22 20:01:46 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.6ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 5697)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.3ms | Allocations: 6377)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:47 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1849)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 5656)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.3ms | Allocations: 6338)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=a&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:49 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"a"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 417)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1959)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 5766)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.4ms | Allocations: 6684)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=a&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:51 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"a"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 417)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1893)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 5700)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.3ms | Allocations: 6599)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:56 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 401)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1891)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 5698)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 0.4ms | Allocations: 6380)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:01:57 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.6ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1849)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 5656)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.3ms | Allocations: 6338)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:02:02 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.6ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1849)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 5656)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.2ms | Allocations: 6338)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=a&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:02:03 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"a"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 417)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1887)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 5694)
+Completed 200 OK in 15ms (Views: 10.8ms | ActiveRecord: 0.4ms | Allocations: 6593)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=a&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:02:04 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"a"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 417)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%a%' OR "rooms"."description" LIKE '%a%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1887)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 5694)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.6ms | Allocations: 6593)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:02:04 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.0ms | Allocations: 401)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 8.9ms | Allocations: 1853)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 5672)
+Completed 200 OK in 18ms (Views: 16.7ms | ActiveRecord: 0.4ms | Allocations: 6355)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD" for ::1 at 2024-07-22 20:02:05 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.0ms | Allocations: 413)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1863)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 5682)
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.4ms | Allocations: 6364)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:02:05 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4060)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 4593)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-22 20:02:05 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 105)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1323)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 5282)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms | Allocations: 6061)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-22 20:02:06 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 153)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1097)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 4942)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms | Allocations: 5728)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-22 20:02:07 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 105)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 5071)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 5828)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-22 20:02:08 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 153)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1090)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 4923)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.0ms | Allocations: 5702)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-22 20:02:08 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 105)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 5073)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 5828)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:02:08 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4057)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 4589)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-22 20:02:13 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 153)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1090)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 4923)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 5705)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:02:39 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 4057)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 4589)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD" for ::1 at 2024-07-22 20:02:41 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.5ms | Allocations: 401)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1849)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 5656)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.6ms | Allocations: 6336)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:02:52 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4057)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 4589)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-22 20:02:55 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 105)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 5771)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 6529)
+
+
+Started POST "/users" for ::1 at 2024-07-22 20:03:21 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"あ", "email"=>"kawa@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kawa@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 596)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 106)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2346)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 6309)
+Completed 422 Unprocessable Entity in 666ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 19382)
+
+
+Started POST "/users" for ::1 at 2024-07-22 20:03:32 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"あ", "email"=>"kawa@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kawa@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name") VALUES (?, ?, ?, ?, ?)[0m  [["email", "kawa@gmail.com"], ["encrypted_password", "$2a$12$OnRFzJGiZja48ayoPibNGOf.1/d0cHvq.W.p1oOwctN7sgLHoGaQq"], ["created_at", "2024-07-22 11:03:32.383549"], ["updated_at", "2024-07-22 11:03:32.383549"], ["name", "あ"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 244ms (ActiveRecord: 2.1ms | Allocations: 7416)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:03:32 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.2ms | Allocations: 244)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 5713)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.1ms | Allocations: 6257)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:03:39 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.6ms | Allocations: 389)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1830)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 6974)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.6ms | Allocations: 7548)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:03:43 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.5ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1852)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 6993)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.5ms | Allocations: 7712)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=%E5%B1%B1%E7%94%B0&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:03:51 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"山田"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 418)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%山田%' OR "rooms"."description" LIKE '%山田%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%山田%' OR "rooms"."description" LIKE '%山田%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1931)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 7060)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.5ms | Allocations: 7972)
+
+
+Started GET "/reservations/index" for ::1 at 2024-07-22 20:04:01 +0900
+Processing by ReservationsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1333)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 6846)
+Completed 200 OK in 18ms (Views: 12.8ms | ActiveRecord: 0.6ms | Allocations: 9483)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=%E5%B1%B1%E7%94%B0&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:04:02 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"山田"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 438)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%山田%' OR "rooms"."description" LIKE '%山田%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%山田%' OR "rooms"."description" LIKE '%山田%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1935)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 7064)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.6ms | Allocations: 8099)
+
+
+Started GET "/rooms/new" for ::1 at 2024-07-22 20:04:06 +0900
+Processing by RoomsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:8:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/new.html.erb within layouts/application
+  Rendered rooms/new.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1710)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 6149)
+Completed 200 OK in 23ms (Views: 13.7ms | ActiveRecord: 0.5ms | Allocations: 11373)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=%E5%B1%B1%E7%94%B0&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:04:07 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"山田"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.8ms | Allocations: 431)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%山田%' OR "rooms"."description" LIKE '%山田%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%山田%' OR "rooms"."description" LIKE '%山田%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2005)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 7183)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.7ms | Allocations: 8250)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:04:14 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 5984)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.3ms | Allocations: 6531)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-22 20:05:26 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2637)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 7014)
+Completed 200 OK in 33ms (Views: 10.5ms | ActiveRecord: 0.4ms | Allocations: 14286)
+
+
+Started GET "/rooms/new" for ::1 at 2024-07-22 20:05:29 +0900
+Processing by RoomsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:8:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/new.html.erb within layouts/application
+  Rendered rooms/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 683)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 4946)
+Completed 200 OK in 24ms (Views: 9.5ms | ActiveRecord: 0.2ms | Allocations: 6447)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-22 20:11:24 +0900
+Processing by RoomsController#own as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 3.2ms | Allocations: 923)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 5186)
+Completed 200 OK in 18ms (Views: 11.8ms | ActiveRecord: 0.9ms | Allocations: 7336)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:11:26 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 249)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 5403)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.2ms | Allocations: 5940)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:11:27 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 2.3ms | Allocations: 389)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 8.5ms | Allocations: 1876)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 7006)
+Completed 200 OK in 24ms (Views: 19.4ms | ActiveRecord: 0.9ms | Allocations: 7583)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:11:29 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 5395)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.2ms | Allocations: 5932)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:11:31 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.6ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1897)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 7026)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.6ms | Allocations: 7743)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&q%5Bname_or_description_cont%5D=%E6%B8%8B%E8%B0%B7&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:11:38 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都", "name_or_description_cont"=>"渋谷"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.9ms | Allocations: 418)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%渋谷%' OR "rooms"."description" LIKE '%渋谷%'))[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE ("rooms"."adress" LIKE '%東京都%' AND ("rooms"."name" LIKE '%渋谷%' OR "rooms"."description" LIKE '%渋谷%'))[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1931)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 7060)
+Completed 200 OK in 18ms (Views: 15.1ms | ActiveRecord: 1.3ms | Allocations: 7972)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:11:55 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.8ms | Allocations: 401)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1849)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 6978)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.3ms | Allocations: 7662)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:11:56 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 5383)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.2ms | Allocations: 5919)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-22 20:13:27 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.8ms | Allocations: 401)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1849)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 20.3ms | Allocations: 6978)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.5ms | Allocations: 7662)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:13:29 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 5383)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.1ms | Allocations: 5919)
+
+
+Started GET "/reservations/index" for ::1 at 2024-07-22 20:13:37 +0900
+Processing by ReservationsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/views/reservations/index.html.erb:17
+  Rendered reservations/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 742)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 5910)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.3ms | Allocations: 6459)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-22 20:13:40 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 2.4ms | Allocations: 883)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 5131)
+Completed 200 OK in 14ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 6506)
+
+
+Started GET "/rooms/new" for ::1 at 2024-07-22 20:13:43 +0900
+Processing by RoomsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:8:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/new.html.erb within layouts/application
+  Rendered rooms/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 647)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 4909)
+Completed 200 OK in 20ms (Views: 10.3ms | ActiveRecord: 0.1ms | Allocations: 6279)
+
+
+Started GET "/" for ::1 at 2024-07-22 20:13:54 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 234)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 6115)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.2ms | Allocations: 6655)
+
+
+Started GET "/" for ::1 at 2024-07-22 22:00:56 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.6ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 48.6ms | Allocations: 19154)
+Completed 200 OK in 59ms (Views: 49.2ms | ActiveRecord: 1.2ms | Allocations: 20368)
+
+
+Started GET "/" for ::1 at 2024-07-23 18:35:44 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 5457)
+Completed 200 OK in 30ms (Views: 17.7ms | ActiveRecord: 2.6ms | Allocations: 6673)
+
+
+Started GET "/users/sign_out" for ::1 at 2024-07-23 18:35:47 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 24ms (ActiveRecord: 0.2ms | Allocations: 5237)
+
+
+Started GET "/" for ::1 at 2024-07-23 18:35:47 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4278)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 4937)
+
+
+Started GET "/" for ::1 at 2024-07-23 18:49:56 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.6ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.2ms | Allocations: 16602)
+Completed 200 OK in 74ms (Views: 66.2ms | ActiveRecord: 0.7ms | Allocations: 17884)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:02:23 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 233)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 4067)
+Completed 200 OK in 21ms (Views: 16.3ms | ActiveRecord: 0.5ms | Allocations: 5279)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:02:28 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.9ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 16192)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.0ms | Allocations: 16724)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:02:34 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 4106)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 4639)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:06:10 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 16199)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.0ms | Allocations: 16731)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:11:29 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 17189)
+Completed 200 OK in 36ms (Views: 28.3ms | ActiveRecord: 0.6ms | Allocations: 18400)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:25:44 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.9ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.1ms | Allocations: 17667)
+Completed 200 OK in 32ms (Views: 26.7ms | ActiveRecord: 0.4ms | Allocations: 18876)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:25:56 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 16721)
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.0ms | Allocations: 17253)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:26:02 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4107)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 4640)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:27:38 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 233)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 18251)
+Completed 200 OK in 31ms (Views: 30.5ms | ActiveRecord: 0.0ms | Allocations: 18784)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:27:39 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 4061)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 4593)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:35:05 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.9ms | Allocations: 17307)
+Completed 200 OK in 39ms (Views: 32.7ms | ActiveRecord: 0.6ms | Allocations: 18517)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:38:06 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 3.2ms | Allocations: 572)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 5292)
+Completed 200 OK in 28ms (Views: 22.7ms | ActiveRecord: 0.0ms | Allocations: 7063)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:38:14 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.7ms | Allocations: 556)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 5281)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.0ms | Allocations: 7104)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:41:21 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 2.2ms | Allocations: 566)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.0ms | Allocations: 5341)
+Completed 200 OK in 58ms (Views: 52.5ms | ActiveRecord: 0.0ms | Allocations: 7164)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-23 19:41:23 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 2.7ms | Allocations: 700)
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 13.0ms | Allocations: 2790)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.4ms | Allocations: 6888)
+Completed 200 OK in 33ms (Views: 28.7ms | ActiveRecord: 2.4ms | Allocations: 8439)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:41:27 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.9ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 4072)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 4691)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:41:36 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1273)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1352)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3065)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="Firstview">
+  <h2 class="Firstviewtitle">
+  Potepan shareで
+  <br>
+  まだ体験したことのない
+  <br>
+  旅をしよう
+  </h2>
+
+  <div class="search-form">
+    <%= search_form_for @search, url: search_rooms_path do |f| %>
+      <%= f.label :adress_cont, 'エリア' %>
+      <%= f.search_field :adress_cont %>
+      <%= f.submit '検索' ,class: %>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="Secoundview">
+<h2 class="recomend">
+おすすめのエリア
+</h2>
+
+<div class="recomend_areas">
+  <div class="recomend_area recomend_tokyo" data-area="東京都">
+    <h2 class="area">東京</h2>
+  </div>
+  <div class="recomend_area recomend_osaka" data-area="大阪府">
+  <h2 class="area">大阪</h2>
+  </div>
+  <div class="recomend_area recomend_kyoto" data-area="京都府">
+  <h2 class="area">京都</h2>
+  </div>
+  <div class="recomend_area recomend_sapporo" data-area="札幌">
+  <h2 class="area">札幌</h2>
+  </div>
+  
+</div>
+</div>
+):
+1:    <div class="Firstview">
+2:      <h2 class="Firstviewtitle">
+3:      Potepan shareで
+4:      <br>
+5:      まだ体験したことのない
+6:      <br>
+7:      旅をしよう
+8:      </h2>
+9:    
+10:      <div class="search-form">
+11:        <%= search_form_for @search, url: search_rooms_path do |f| %>
+12:          <%= f.label :adress_cont, 'エリア' %>
+13:          <%= f.search_field :adress_cont %>
+14:          <%= f.submit '検索' ,class: %>
+15:        <% end %>
+16:      </div>
+17:    
+18:    </div>
+19:    
+20:    <div class="Secoundview">
+21:    <h2 class="recomend">
+22:    おすすめのエリア
+23:    </h2>
+24:    
+25:    <div class="recomend_areas">
+26:      <div class="recomend_area recomend_tokyo" data-area="東京都">
+27:        <h2 class="area">東京</h2>
+28:      </div>
+29:      <div class="recomend_area recomend_osaka" data-area="大阪府">
+30:      <h2 class="area">大阪</h2>
+31:      </div>
+32:      <div class="recomend_area recomend_kyoto" data-area="京都府">
+33:      <h2 class="area">京都</h2>
+34:      </div>
+35:      <div class="recomend_area recomend_sapporo" data-area="札幌">
+36:      <h2 class="area">札幌</h2>
+37:      </div>
+38:      
+39:    </div>
+40:    </div>
+  
+app/views/home/top.html.erb:14: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+Started GET "/" for ::1 at 2024-07-23 19:41:47 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.9ms | Allocations: 563)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | Allocations: 5288)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.0ms | Allocations: 7138)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:41:53 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 2.0ms | Allocations: 571)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 5296)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 7126)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:42:32 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.0ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 17370)
+Completed 200 OK in 39ms (Views: 37.1ms | ActiveRecord: 0.0ms | Allocations: 17990)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:44:38 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 16260)
+Completed 200 OK in 40ms (Views: 36.8ms | ActiveRecord: 0.0ms | Allocations: 16792)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:47:09 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 242)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 16761)
+Completed 200 OK in 31ms (Views: 25.2ms | ActiveRecord: 0.0ms | Allocations: 17293)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:47:20 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.9ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 17710)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.0ms | Allocations: 18242)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:52:04 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 3.4ms | Allocations: 571)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 5381)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 0.0ms | Allocations: 7123)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:53:10 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1264)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1343)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3120)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="Firstview">
+  <h2 class="Firstviewtitle">
+  Potepan shareで
+  <br>
+  まだ体験したことのない
+  <br>
+  旅をしよう
+  </h2>
+
+  <div class="search-form">
+    <%= search_form_for @search, url: search_rooms_path do |f| %>
+      <%= f.label :adress_cont, 'エリア' %>
+      <%= f.search_field :adress_cont %>
+      <%= f.submit '検索', class: "class="btn FirstViewSearch__button"" %>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="Secoundview">
+<h2 class="recomend">
+おすすめのエリア
+</h2>
+
+<div class="recomend_areas">
+  <div class="recomend_area recomend_tokyo" data-area="東京都">
+    <h2 class="area">東京</h2>
+  </div>
+  <div class="recomend_area recomend_osaka" data-area="大阪府">
+  <h2 class="area">大阪</h2>
+  </div>
+  <div class="recomend_area recomend_kyoto" data-area="京都府">
+  <h2 class="area">京都</h2>
+  </div>
+  <div class="recomend_area recomend_sapporo" data-area="札幌">
+  <h2 class="area">札幌</h2>
+  </div>
+  
+</div>
+</div>
+):
+1:    <div class="Firstview">
+2:      <h2 class="Firstviewtitle">
+3:      Potepan shareで
+4:      <br>
+5:      まだ体験したことのない
+6:      <br>
+7:      旅をしよう
+8:      </h2>
+9:    
+10:      <div class="search-form">
+11:        <%= search_form_for @search, url: search_rooms_path do |f| %>
+12:          <%= f.label :adress_cont, 'エリア' %>
+13:          <%= f.search_field :adress_cont %>
+14:          <%= f.submit '検索', class: "class="btn FirstViewSearch__button"" %>
+15:        <% end %>
+16:      </div>
+17:    
+18:    </div>
+19:    
+20:    <div class="Secoundview">
+21:    <h2 class="recomend">
+22:    おすすめのエリア
+23:    </h2>
+24:    
+25:    <div class="recomend_areas">
+26:      <div class="recomend_area recomend_tokyo" data-area="東京都">
+27:        <h2 class="area">東京</h2>
+28:      </div>
+29:      <div class="recomend_area recomend_osaka" data-area="大阪府">
+30:      <h2 class="area">大阪</h2>
+31:      </div>
+32:      <div class="recomend_area recomend_kyoto" data-area="京都府">
+33:      <h2 class="area">京都</h2>
+34:      </div>
+35:      <div class="recomend_area recomend_sapporo" data-area="札幌">
+36:      <h2 class="area">札幌</h2>
+37:      </div>
+38:      
+39:    </div>
+40:    </div>
+  
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+Started GET "/" for ::1 at 2024-07-23 19:53:27 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1298)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1377)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3176)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="Firstview">
+  <h2 class="Firstviewtitle">
+  Potepan shareで
+  <br>
+  まだ体験したことのない
+  <br>
+  旅をしよう
+  </h2>
+
+  <div class="search-form">
+    <%= search_form_for @search, url: search_rooms_path do |f| %>
+      <%= f.label :adress_cont, 'エリア' %>
+      <%= f.search_field :adress_cont %>
+      <%= f.submit '検索', "class="btn FirstViewSearch__button" %>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="Secoundview">
+<h2 class="recomend">
+おすすめのエリア
+</h2>
+
+<div class="recomend_areas">
+  <div class="recomend_area recomend_tokyo" data-area="東京都">
+    <h2 class="area">東京</h2>
+  </div>
+  <div class="recomend_area recomend_osaka" data-area="大阪府">
+  <h2 class="area">大阪</h2>
+  </div>
+  <div class="recomend_area recomend_kyoto" data-area="京都府">
+  <h2 class="area">京都</h2>
+  </div>
+  <div class="recomend_area recomend_sapporo" data-area="札幌">
+  <h2 class="area">札幌</h2>
+  </div>
+  
+</div>
+</div>
+):
+1:    <div class="Firstview">
+2:      <h2 class="Firstviewtitle">
+3:      Potepan shareで
+4:      <br>
+5:      まだ体験したことのない
+6:      <br>
+7:      旅をしよう
+8:      </h2>
+9:    
+10:      <div class="search-form">
+11:        <%= search_form_for @search, url: search_rooms_path do |f| %>
+12:          <%= f.label :adress_cont, 'エリア' %>
+13:          <%= f.search_field :adress_cont %>
+14:          <%= f.submit '検索', "class="btn FirstViewSearch__button" %>
+15:        <% end %>
+16:      </div>
+17:    
+18:    </div>
+19:    
+20:    <div class="Secoundview">
+21:    <h2 class="recomend">
+22:    おすすめのエリア
+23:    </h2>
+24:    
+25:    <div class="recomend_areas">
+26:      <div class="recomend_area recomend_tokyo" data-area="東京都">
+27:        <h2 class="area">東京</h2>
+28:      </div>
+29:      <div class="recomend_area recomend_osaka" data-area="大阪府">
+30:      <h2 class="area">大阪</h2>
+31:      </div>
+32:      <div class="recomend_area recomend_kyoto" data-area="京都府">
+33:      <h2 class="area">京都</h2>
+34:      </div>
+35:      <div class="recomend_area recomend_sapporo" data-area="札幌">
+36:      <h2 class="area">札幌</h2>
+37:      </div>
+38:      
+39:    </div>
+40:    </div>
+  
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:20: syntax error, unexpected constant, expecting ')'
+app/views/home/top.html.erb:21: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:25: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:27: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:30: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:33: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:36: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:42: unterminated string meets end of file
+app/views/home/top.html.erb:42: syntax error, unexpected end-of-input, expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:20: syntax error, unexpected constant, expecting ')'
+app/views/home/top.html.erb:21: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:25: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:27: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:30: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:33: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:36: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:42: unterminated string meets end of file
+app/views/home/top.html.erb:42: syntax error, unexpected end-of-input, expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:20: syntax error, unexpected constant, expecting ')'
+app/views/home/top.html.erb:21: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:25: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:27: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:30: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:33: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:36: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:42: unterminated string meets end of file
+app/views/home/top.html.erb:42: syntax error, unexpected end-of-input, expecting ')'
+app/views/home/top.html.erb:14: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:20: syntax error, unexpected constant, expecting ')'
+app/views/home/top.html.erb:21: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:25: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:26: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:27: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:29: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:30: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:32: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:33: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:35: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:36: syntax error, unexpected local variable or method, expecting ')'
+app/views/home/top.html.erb:42: unterminated string meets end of file
+app/views/home/top.html.erb:42: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/" for ::1 at 2024-07-23 19:53:40 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.5ms | Allocations: 574)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | Allocations: 19180)
+Completed 200 OK in 41ms (Views: 38.6ms | ActiveRecord: 0.0ms | Allocations: 21024)
+
+
+Started GET "/" for ::1 at 2024-07-23 19:53:52 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.6ms | Allocations: 572)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 5297)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 7128)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:10:21 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.6ms | Allocations: 576)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 18103)
+Completed 200 OK in 32ms (Views: 25.1ms | ActiveRecord: 0.8ms | Allocations: 20674)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:11:09 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 240)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.2ms | Allocations: 17669)
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.0ms | Allocations: 18289)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:11:20 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 240)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.1ms | Allocations: 17294)
+Completed 200 OK in 34ms (Views: 32.8ms | ActiveRecord: 0.0ms | Allocations: 17826)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:11:56 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 246)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.3ms | Allocations: 17777)
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.0ms | Allocations: 18309)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:12:27 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 581)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 5300)
+Completed 200 OK in 24ms (Views: 17.9ms | ActiveRecord: 0.0ms | Allocations: 7042)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:14:37 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.6ms | Allocations: 240)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 4125)
+Completed 200 OK in 18ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 4745)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:14:49 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 240)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 17914)
+Completed 200 OK in 36ms (Views: 34.3ms | ActiveRecord: 0.0ms | Allocations: 18446)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:15:02 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 240)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 4116)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 4649)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:15:16 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1263)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1342)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 3039)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="Firstview">
+  <h2 class="Firstviewtitle">
+  Potepan shareで
+  <br>
+  まだ体験したことのない
+  <br>
+  旅をしよう
+  </h2>
+
+  <div class="search-form">
+    <%= search_form_for @search, url: search_rooms_path do |f| %>
+      <%= f.label :adress_cont, 'エリア',%>
+      <%= f.search_field :adress_cont %>
+      <%= f.submit '検索', class: "FirstViewSearch__button" %>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="Secoundview">
+<h2 class="recomend">
+おすすめのエリア
+</h2>
+
+<div class="recomend_areas">
+  <div class="recomend_area recomend_tokyo" data-area="東京都">
+    <h2 class="area">東京</h2>
+  </div>
+  <div class="recomend_area recomend_osaka" data-area="大阪府">
+  <h2 class="area">大阪</h2>
+  </div>
+  <div class="recomend_area recomend_kyoto" data-area="京都府">
+  <h2 class="area">京都</h2>
+  </div>
+  <div class="recomend_area recomend_sapporo" data-area="札幌">
+  <h2 class="area">札幌</h2>
+  </div>
+  
+</div>
+</div>
+):
+1:    <div class="Firstview">
+2:      <h2 class="Firstviewtitle">
+3:      Potepan shareで
+4:      <br>
+5:      まだ体験したことのない
+6:      <br>
+7:      旅をしよう
+8:      </h2>
+9:    
+10:      <div class="search-form">
+11:        <%= search_form_for @search, url: search_rooms_path do |f| %>
+12:          <%= f.label :adress_cont, 'エリア',%>
+13:          <%= f.search_field :adress_cont %>
+14:          <%= f.submit '検索', class: "FirstViewSearch__button" %>
+15:        <% end %>
+16:      </div>
+17:    
+18:    </div>
+19:    
+20:    <div class="Secoundview">
+21:    <h2 class="recomend">
+22:    おすすめのエリア
+23:    </h2>
+24:    
+25:    <div class="recomend_areas">
+26:      <div class="recomend_area recomend_tokyo" data-area="東京都">
+27:        <h2 class="area">東京</h2>
+28:      </div>
+29:      <div class="recomend_area recomend_osaka" data-area="大阪府">
+30:      <h2 class="area">大阪</h2>
+31:      </div>
+32:      <div class="recomend_area recomend_kyoto" data-area="京都府">
+33:      <h2 class="area">京都</h2>
+34:      </div>
+35:      <div class="recomend_area recomend_sapporo" data-area="札幌">
+36:      <h2 class="area">札幌</h2>
+37:      </div>
+38:      
+39:    </div>
+40:    </div>
+  
+app/views/home/top.html.erb:12: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:12: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:12: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:12: syntax error, unexpected ')'
+app/views/home/top.html.erb:15: syntax error, unexpected `end', expecting ')'
+app/views/home/top.html.erb:42: syntax error, unexpected `end', expecting ')'
+Started GET "/" for ::1 at 2024-07-23 20:15:23 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.2ms | Allocations: 573)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 5298)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.0ms | Allocations: 7142)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:15:42 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 2.2ms | Allocations: 575)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 5295)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.0ms | Allocations: 7118)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:15:54 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.9ms | Allocations: 571)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 5291)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 7121)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-23 20:16:09 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.5ms | Allocations: 694)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 8.8ms | Allocations: 2781)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 6874)
+Completed 200 OK in 20ms (Views: 17.2ms | ActiveRecord: 0.7ms | Allocations: 8438)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:16:13 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 4067)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 4685)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:16:37 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.5ms | Allocations: 19395)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.0ms | Allocations: 19927)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:16:48 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 17753)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.0ms | Allocations: 18285)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:17:10 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.0ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.3ms | Allocations: 18167)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.0ms | Allocations: 18699)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:17:19 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | Allocations: 16765)
+Completed 200 OK in 34ms (Views: 32.9ms | ActiveRecord: 0.0ms | Allocations: 17297)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:25:38 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 12953)
+Completed 200 OK in 21ms (Views: 17.7ms | ActiveRecord: 0.5ms | Allocations: 14194)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:28:43 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | Allocations: 13414)
+Completed 200 OK in 33ms (Views: 31.5ms | ActiveRecord: 0.0ms | Allocations: 13946)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:29:20 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 2.2ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 4585)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 5117)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:33:17 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.5ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 13850)
+Completed 200 OK in 32ms (Views: 31.2ms | ActiveRecord: 0.0ms | Allocations: 14382)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:34:38 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 82.1ms | Allocations: 14816)
+Completed 200 OK in 85ms (Views: 83.7ms | ActiveRecord: 0.0ms | Allocations: 15348)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:34:46 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.3ms | Allocations: 242)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 14876)
+Completed 200 OK in 32ms (Views: 29.6ms | ActiveRecord: 0.0ms | Allocations: 15408)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:34:53 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.4ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 4102)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 4634)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:36:35 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.5ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.1ms | Allocations: 13432)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.0ms | Allocations: 13964)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-23 20:39:42 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.6ms | Allocations: 385)
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | Allocations: 16363)
+Completed 200 OK in 38ms (Views: 30.0ms | ActiveRecord: 3.5ms | Allocations: 16936)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:39:43 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.7ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 4062)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 4594)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-23 20:39:45 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 3.7ms | Allocations: 379)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1811)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 5618)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.5ms | Allocations: 6186)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:39:45 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 242)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 4073)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 4606)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-23 20:39:47 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>""}, "commit"=>"検索"}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.0ms | Allocations: 381)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1811)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 5623)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.3ms | Allocations: 6192)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:39:47 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 4062)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 4594)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:45:11 +0900
+Processing by HomeController#top as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 2.5ms | Allocations: 574)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 16191)
+Completed 200 OK in 43ms (Views: 34.5ms | ActiveRecord: 1.1ms | Allocations: 18612)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:45:19 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 15326)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.0ms | Allocations: 15946)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:45:31 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.9ms | Allocations: 14399)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.0ms | Allocations: 14931)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:45:59 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.2ms | Allocations: 14317)
+Completed 200 OK in 48ms (Views: 46.8ms | ActiveRecord: 0.0ms | Allocations: 14849)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:46:08 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 242)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 4113)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 4646)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:46:53 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 14348)
+Completed 200 OK in 27ms (Views: 26.5ms | ActiveRecord: 0.0ms | Allocations: 14880)
+
+
+Started GET "/" for ::1 at 2024-07-23 20:46:59 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 4102)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 4634)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD" for ::1 at 2024-07-24 18:02:18 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 744)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2924)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 7016)
+Completed 200 OK in 21ms (Views: 12.2ms | ActiveRecord: 0.6ms | Allocations: 12650)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-07-24 18:02:22 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 220)
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 493)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 8.9ms | Allocations: 2839)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 6890)
+Completed 200 OK in 30ms (Views: 22.4ms | ActiveRecord: 0.0ms | Allocations: 15093)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-07-24 18:02:26 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 185)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1660)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 6545)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 9106)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-07-24 18:02:44 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"kawa@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "kawa@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 246ms (ActiveRecord: 0.6ms | Allocations: 5678)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:02:44 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.3ms | Allocations: 346)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 6014)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.1ms | Allocations: 6934)
+
+
+Started GET "/rooms/new" for ::1 at 2024-07-24 18:04:14 +0900
+Processing by RoomsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:8:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/new.html.erb within layouts/application
+  Rendered rooms/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 5377)
+Completed 200 OK in 23ms (Views: 13.4ms | ActiveRecord: 0.2ms | Allocations: 10361)
+
+
+Started POST "/rooms" for ::1 at 2024-07-24 18:04:20 +0900
+Processing by RoomsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "room"=>{"name"=>"a", "description"=>"1", "price"=>"1", "adress"=>"1", "room_id"=>""}, "commit"=>"保存"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:13:in `create'
+[31mUnpermitted parameter: :room_id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+  [1m[36mRoom Create (0.8ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "description", "price", "user_id", "created_at", "updated_at", "adress") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "a"], ["description", "1"], ["price", 1.0], ["user_id", 1], ["created_at", "2024-07-24 09:04:21.003287"], ["updated_at", "2024-07-24 09:04:21.003287"], ["adress", "1"]]
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+Redirected to http://localhost:3000/rooms/1
+Completed 302 Found in 18ms (ActiveRecord: 1.7ms | Allocations: 7483)
+
+
+Started GET "/rooms/1" for ::1 at 2024-07-24 18:04:21 +0900
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:34:in `show'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:35:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/show.html.erb within layouts/application
+  Rendered rooms/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2254)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 6544)
+Completed 200 OK in 24ms (Views: 14.8ms | ActiveRecord: 0.7ms | Allocations: 13585)
+
+
+Started POST "/reservations/confirm" for ::1 at 2024-07-24 18:04:31 +0900
+Processing by ReservationsController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reservation"=>{"start_date"=>"2024-07-25", "finish_date"=>"2024-07-26", "number_of_people"=>"2", "room_id"=>"1", "user_id"=>"1"}, "commit"=>"予約"}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:12:in `confirm'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:13:in `confirm'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:16:in `confirm'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:16:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering reservations/confirm.html.erb within layouts/application
+  Rendered reservations/confirm.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1241)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 6737)
+Completed 200 OK in 24ms (Views: 9.1ms | ActiveRecord: 0.7ms | Allocations: 13270)
+
+
+Started POST "/reservations" for ::1 at 2024-07-24 18:04:33 +0900
+Processing by ReservationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "reservation"=>{"start_date"=>"2024-07-25", "finish_date"=>"2024-07-26", "number_of_people"=>"2", "room_id"=>"1", "user_id"=>"1"}, "commit"=>"予約完了する"}
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/reservations_controller.rb:36:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:36:in `create'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/reservations_controller.rb:36:in `create'
+  [1m[36mReservation Create (0.7ms)[0m  [1m[32mINSERT INTO "reservations" ("start_date", "finish_date", "number_of_people", "user_id", "room_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_date", "2024-07-25"], ["finish_date", "2024-07-26"], ["number_of_people", 2], ["user_id", 1], ["room_id", 1], ["created_at", "2024-07-24 09:04:33.605266"], ["updated_at", "2024-07-24 09:04:33.605266"]]
+  ↳ app/controllers/reservations_controller.rb:36:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/reservations_controller.rb:36:in `create'
+Redirected to http://localhost:3000/reservations
+Completed 302 Found in 13ms (ActiveRecord: 1.7ms | Allocations: 5741)
+
+
+Started GET "/reservations" for ::1 at 2024-07-24 18:04:33 +0900
+Processing by ReservationsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering reservations/index.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  ↳ app/views/reservations/index.html.erb:17
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/reservations/index.html.erb:20
+  Rendered reservations/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 5113)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 10352)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.4ms | Allocations: 12331)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:04:35 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 257)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 6115)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.3ms | Allocations: 6656)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-24 18:04:39 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2283)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 6328)
+Completed 200 OK in 20ms (Views: 13.6ms | ActiveRecord: 0.5ms | Allocations: 8299)
+
+
+Started GET "/rooms/1/edit" for ::1 at 2024-07-24 18:04:43 +0900
+Started GET "/rooms/own" for ::1 at 2024-07-24 18:04:43 +0900
+Processing by RoomsController#edit as HTML
+Processing by RoomsController#own as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  [1m[36mRoom Load (1.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  ↳ app/controllers/rooms_controller.rb:51:in `edit'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/edit.html.erb within layouts/application
+  Rendered rooms/edit.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1266)
+  Rendered rooms/own.html.erb within layouts/application (Duration: 9.3ms | Allocations: 3370)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 12054)
+Completed 200 OK in 28ms (Views: 20.5ms | ActiveRecord: 0.2ms | Allocations: 14965)
+
+
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 11405)
+Completed 200 OK in 28ms (Views: 17.4ms | ActiveRecord: 2.3ms | Allocations: 15164)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-24 18:04:45 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 5696)
+Completed 200 OK in 17ms (Views: 12.7ms | ActiveRecord: 0.4ms | Allocations: 7071)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-24 18:04:45 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 5762)
+Completed 200 OK in 17ms (Views: 12.8ms | ActiveRecord: 0.2ms | Allocations: 7153)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:04:46 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 5396)
+Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.2ms | Allocations: 5934)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9D%B1%E4%BA%AC%E9%83%BD" for ::1 at 2024-07-24 18:06:00 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"東京都"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 412)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%東京都%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1923)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 7055)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.4ms | Allocations: 7777)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:06:01 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 5393)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.1ms | Allocations: 5930)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E5%A4%A7%E9%98%AA%E5%BA%9C" for ::1 at 2024-07-24 18:06:02 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"大阪府"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.7ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%大阪府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 7019)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.7ms | Allocations: 7703)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:06:03 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 5393)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.1ms | Allocations: 5929)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E4%BA%AC%E9%83%BD%E5%BA%9C" for ::1 at 2024-07-24 18:06:03 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"京都府"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.1ms | Allocations: 401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%京都府%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%京都府%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 7019)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.7ms | Allocations: 7704)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:06:04 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 5388)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.1ms | Allocations: 5924)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9C%AD%E5%B9%8C" for ::1 at 2024-07-24 18:06:04 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"札幌"}}
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 0.6ms | Allocations: 401)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%札幌%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%札幌%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1890)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 7019)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.6ms | Allocations: 7703)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:06:05 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 5391)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.1ms | Allocations: 5927)
+
+
+Started GET "/users/account" for ::1 at 2024-07-24 18:06:18 +0900
+Processing by UsersController#account as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `account'
+  Rendering layout layouts/application.html.erb
+  Rendering users/account.html.erb within layouts/application
+  Rendered shared/_account.html.erb (Duration: 0.6ms | Allocations: 137)
+  Rendered users/account.html.erb within layouts/application (Duration: 1.8ms | Allocations: 522)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 5069)
+Completed 200 OK in 14ms (Views: 11.0ms | ActiveRecord: 0.1ms | Allocations: 7671)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:06:21 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.8ms | Allocations: 260)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 5546)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.2ms | Allocations: 6175)
+
+
+Started GET "/users/account" for ::1 at 2024-07-24 18:06:22 +0900
+Processing by UsersController#account as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `account'
+  Rendering layout layouts/application.html.erb
+  Rendering users/account.html.erb within layouts/application
+  Rendered shared/_account.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered users/account.html.erb within layouts/application (Duration: 0.3ms | Allocations: 138)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 4416)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 0.1ms | Allocations: 5767)
+
+
+Started GET "/" for ::1 at 2024-07-24 18:06:23 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.6ms | Allocations: 243)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 5400)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 5937)
+
+
+Started GET "/rooms/search?q%5Badress_cont%5D=%E6%9C%AD%E5%B9%8C&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2024-07-24 19:18:44 +0900
+Processing by RoomsController#search as HTML
+  Parameters: {"q"=>{"adress_cont"=>"札幌"}, "commit"=>"検索"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:12:in `set_search'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/search.html.erb within layouts/application
+  Rendered shared/_search.html.erb (Duration: 1.5ms | Allocations: 410)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "rooms" WHERE "rooms"."adress" LIKE '%札幌%'[0m
+  ↳ app/views/rooms/search.html.erb:11
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."adress" LIKE '%札幌%'[0m
+  ↳ app/views/rooms/search.html.erb:14
+  Rendered rooms/search.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1918)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | Allocations: 7103)
+Completed 200 OK in 29ms (Views: 20.6ms | ActiveRecord: 1.6ms | Allocations: 8538)
+
+
+Started GET "/" for ::1 at 2024-07-24 19:18:47 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.0ms | Allocations: 236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 6100)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.2ms | Allocations: 6639)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-24 19:18:51 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1643)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 5752)
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 0.5ms | Allocations: 7131)
+
+
+Started GET "/rooms/1" for ::1 at 2024-07-24 19:18:54 +0900
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:34:in `show'
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:35:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/show.html.erb within layouts/application
+  Rendered rooms/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1112)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 5928)
+Completed 200 OK in 20ms (Views: 14.5ms | ActiveRecord: 0.3ms | Allocations: 7918)
+
+
+Started GET "/" for ::1 at 2024-07-24 19:18:55 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 237)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 5392)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.2ms | Allocations: 5929)
+
+
+Started GET "/rooms/own" for ::1 at 2024-07-24 19:18:56 +0900
+Processing by RoomsController#own as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:45:in `own'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/own.html.erb within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/rooms/own.html.erb:20
+  Rendered rooms/own.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1546)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 5655)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.3ms | Allocations: 7030)
+
+
+Started GET "/rooms/1" for ::1 at 2024-07-24 19:18:57 +0900
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:34:in `show'
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:35:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/show.html.erb within layouts/application
+  Rendered rooms/show.html.erb within layouts/application (Duration: 11.4ms | Allocations: 1193)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 5308)
+Completed 200 OK in 24ms (Views: 18.6ms | ActiveRecord: 0.4ms | Allocations: 7269)
+
+
+Started GET "/" for ::1 at 2024-07-24 19:18:58 +0900
+Processing by HomeController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/top.html.erb within layouts/application
+  Rendered home/top.html.erb within layouts/application (Duration: 1.1ms | Allocations: 243)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:29
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 5400)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.2ms | Allocations: 5937)
+
+
